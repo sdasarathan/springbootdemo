@@ -1,1 +1,8 @@
-<h1>Welcome to Spring Boot</h1>
+<html>
+<title>
+Welcome to Spring Boot
+</title>
+<body>
+<%@ include file="index.html" %>
+</body>
+</html>
