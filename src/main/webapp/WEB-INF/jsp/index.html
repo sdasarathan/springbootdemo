@@ -33,6 +33,7 @@ body {font-family: Arial, Helvetica, sans-serif;}
     display: block;
   }
 }
+
 </style>
 <body>
 
@@ -45,21 +46,39 @@ body {font-family: Arial, Helvetica, sans-serif;}
 </div>
 <h2>Profile</h2>
 <p>Shows the profile</p>
+<div>
 <table>
     <tbody>
-        <tr>
-            <td>
-                <button type="button" onclick="alert('Hello world!')">Add</button>
-            </td>
-            <td>
-                <button type="button" onclick="alert('Hello world!')">Delete</button>
-            </td>
-            <td>
-                <button type="button" onclick="alert('Hello world!')">Update</button>
-            </td>
-        </tr>
+    <tr>
+        <td>
+            <input type="text" name="add">
+        </td>
+        <td>
+            <button type="button" >Add</button>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <input type="text" name="Update">
+        </td>
+        <td>
+            <button type="button" >Update</button>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <input type="text" name="Delete">
+        </td>
+        <td>
+            <button type="button" >Delete</button>
+        </td>
+    </tr>
     </tbody>
 </table>
-
+</div>
+<div>
+    Value
+    <output name="result"></output>
+</div>
 </body>
 </html>
