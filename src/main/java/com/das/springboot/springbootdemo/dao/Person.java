@@ -7,7 +7,7 @@ import javax.persistence.Id;
 
 @Entity
 public class Person {
-
+//test for new branch
     @Id
     @GeneratedValue
     private Long id;
