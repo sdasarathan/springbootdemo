@@ -19,7 +19,7 @@ CREATE TABLE person (
   last_name VARCHAR(250) NOT NULL
 );
 
-INSERT INTO person (first_name, last_name) VALUES
-  ('Aliko', 'Dangote'),
-  ('Bill', 'Gates'),
-  ('Folrunsho', 'Alakija');
+--INSERT INTO person (first_name, last_name) VALUES
+--  ('Aliko', 'Dangote'),
+--  ('Bill', 'Gates'),
+--  ('Folrunsho', 'Alakija');

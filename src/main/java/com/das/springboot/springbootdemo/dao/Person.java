@@ -1,21 +1,18 @@
 package com.das.springboot.springbootdemo.dao;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
 public class Person {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long id;
 
-//    @Column(name = "first_name")
+    @Column(name = "first_name")
     private String firstName;
 
-//    @Column(name = "first_name")
+    @Column(name = "last_name")
     private String lastName;
 
     public Person() {
