@@ -22,9 +22,14 @@ class RestController {
         return "{\"status\": \"up\"}";
     }
 
+    /**
+     * Example rest call
+     * curl localhost:8080/rest/persons
+     * @return
+     */
     @GetMapping("/persons")
     public List<Person> listAllPerson() {
-       return personRepository.findAll();
+        return personRepository.findAll();
     }
 
     /*
@@ -36,5 +41,16 @@ class RestController {
     void addPerson(@RequestBody Person person){
         System.out.println("Request body: first name:" + person.getFirstName());
         personRepository.save(person);
+    }
+
+    /**
+     * Example rest call for delete
+     * curl -X DELETE localhost:8080/rest/delete/1
+     *
+     * @param id
+     */
+    @DeleteMapping("delete/{id}")
+    public void deletePersonById(@PathVariable Long id){
+        personRepository.deleteById(id);
     }
 }
