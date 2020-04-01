@@ -3,10 +3,7 @@ package com.das.springboot.springbootdemo.controller;
 import com.das.springboot.springbootdemo.dao.Person;
 import com.das.springboot.springbootdemo.repository.PersonRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -30,11 +27,14 @@ class RestController {
        return personRepository.findAll();
     }
 
-    @PostMapping("/add/{personName}")
-    void addPerson(@PathVariable String personName){
-        Person person = new Person();
-        person.setFirstName(personName);
-        person.setLastName("abc");
+    /*
+    * Example rest call
+    * curl -X POST localhost:8080/rest/add -H "Accept: application/json"
+    * -H 'Content-type:application/json' -d '{"firstName":"abc","lastName":"bbc"}'
+    * */
+    @PostMapping("/add")
+    void addPerson(@RequestBody Person person){
+        System.out.println("Request body: first name:" + person.getFirstName());
         personRepository.save(person);
     }
 }
