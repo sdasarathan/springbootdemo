@@ -6,7 +6,7 @@ import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
-@Repository
+@Repository()
 public interface PortfolioRepository extends CrudRepository<Portfolio, Long> {
 
     List<Portfolio> findByUsername(String username);

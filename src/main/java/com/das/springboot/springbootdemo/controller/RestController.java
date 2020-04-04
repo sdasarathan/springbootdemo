@@ -1,7 +1,9 @@
 package com.das.springboot.springbootdemo.controller;
 
+import com.das.springboot.springbootdemo.dao.Fund;
 import com.das.springboot.springbootdemo.dao.Person;
 import com.das.springboot.springbootdemo.dao.Portfolio;
+import com.das.springboot.springbootdemo.repository.FundRepository;
 import com.das.springboot.springbootdemo.repository.PersonRepository;
 import com.das.springboot.springbootdemo.repository.PortfolioRepository;
 import org.springframework.web.bind.annotation.*;
@@ -16,9 +18,12 @@ class RestController {
 
     private final PortfolioRepository portfolioRepository;
 
-    RestController(PersonRepository personRepository, PortfolioRepository portfolioRepository) {
+    private final FundRepository fundRepository;
+
+    RestController(PersonRepository personRepository, PortfolioRepository portfolioRepository, FundRepository fundRepository) {
         this.personRepository = personRepository;
         this.portfolioRepository = portfolioRepository;
+        this.fundRepository = fundRepository;
     }
 
     @GetMapping("/status")
@@ -76,6 +81,26 @@ class RestController {
     @PostMapping("/add/portfolio")
     public void addPortfolio(@RequestBody Portfolio portfolio){
         portfolioRepository.save(portfolio);
+    }
+
+    /**
+     * Example rest call
+     * curl localhost:8080/rest/portfolio
+     * @return
+     */
+    @GetMapping("/fund")
+    public List<Fund> listAllFund() {
+        return (List<Fund>) fundRepository.findAll();
+    }
+
+    /*
+     * Example rest call
+     * curl -X POST localhost:8080/rest/add/fund -H "Accept: application/json"
+     * -H 'Content-type:application/json' -d '{"fundName":"SBI", "fundType":"MutualFund"}'
+     * */
+    @PostMapping("/add/fund")
+    public void addPortfolio(@RequestBody Fund fund){
+        fundRepository.save(fund);
     }
 
 }
