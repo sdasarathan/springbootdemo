@@ -1,8 +1,9 @@
 package com.das.springboot.springbootdemo.controller;
 
 import com.das.springboot.springbootdemo.dao.Person;
+import com.das.springboot.springbootdemo.dao.Portfolio;
 import com.das.springboot.springbootdemo.repository.PersonRepository;
-import org.springframework.beans.factory.annotation.Autowired;
+import com.das.springboot.springbootdemo.repository.PortfolioRepository;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -13,8 +14,11 @@ class RestController {
 
     private final PersonRepository personRepository;
 
-    RestController(PersonRepository personRepository) {
+    private final PortfolioRepository portfolioRepository;
+
+    RestController(PersonRepository personRepository, PortfolioRepository portfolioRepository) {
         this.personRepository = personRepository;
+        this.portfolioRepository = portfolioRepository;
     }
 
     @GetMapping("/status")
@@ -53,4 +57,25 @@ class RestController {
     public void deletePersonById(@PathVariable Long id){
         personRepository.deleteById(id);
     }
+
+    /**
+     * Example rest call
+     * curl localhost:8080/rest/portfolio
+     * @return
+     */
+    @GetMapping("/portfolio")
+    public List<Portfolio> listAllPortfolio() {
+        return (List<Portfolio>) portfolioRepository.findAll();
+    }
+
+    /*
+     * Example rest call
+     * curl -X POST localhost:8080/rest/add/portfolio -H "Accept: application/json"
+     * -H 'Content-type:application/json' -d '{"username":"abc"}'
+     * */
+    @PostMapping("/add/portfolio")
+    public void addPortfolio(@RequestBody Portfolio portfolio){
+        portfolioRepository.save(portfolio);
+    }
+
 }
