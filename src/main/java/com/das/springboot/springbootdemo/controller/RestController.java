@@ -85,7 +85,7 @@ class RestController {
 
     /**
      * Example rest call
-     * curl localhost:8080/rest/portfolio
+     * curl localhost:8080/rest/fund
      * @return
      */
     @GetMapping("/fund")

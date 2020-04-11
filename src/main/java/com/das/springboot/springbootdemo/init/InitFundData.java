@@ -28,6 +28,6 @@ public class InitFundData extends CommonCLR {
     @Override
     public void run(String... args) throws Exception {
         LOGGER.info("In Init Fund Data");
-        initData( fundRepository);
+        initData(fundRepository);
     }
 }
