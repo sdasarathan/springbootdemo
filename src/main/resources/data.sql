@@ -30,6 +30,8 @@ CREATE TABLE fund (
 );
 
 INSERT INTO investor (first_name, last_name) values ('John', 'Wick');
+INSERT INTO fund (investor_id, fund_name, fund_type) VALUES ('1', 'SBI-Smart Scholor', 'MUTUAL FUND');
+INSERT INTO portfolio (username) VALUES ('Test Portfolio');
 --INSERT INTO person (first_name, last_name) VALUES
 --  ('Aliko', 'Dangote'),
 --  ('Bill', 'Gates'),
