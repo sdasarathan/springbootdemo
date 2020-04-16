@@ -23,9 +23,13 @@ CREATE TABLE investor (
 );
 CREATE TABLE fund (
   id INT AUTO_INCREMENT  PRIMARY KEY,
+  investor_id INT,
   fund_name VARCHAR(250) NOT NULL,
-  fund_type VARCHAR(250) NOT NULL
-)
+  fund_type VARCHAR(250) NOT NULL,
+  FOREIGN KEY (investor_id) REFERENCES investor(id)
+);
+
+INSERT INTO investor (first_name, last_name) values ('John', 'Wick');
 --INSERT INTO person (first_name, last_name) VALUES
 --  ('Aliko', 'Dangote'),
 --  ('Bill', 'Gates'),

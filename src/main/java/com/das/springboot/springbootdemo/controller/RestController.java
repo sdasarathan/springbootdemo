@@ -93,7 +93,7 @@ class RestController {
         return (List<Fund>) fundRepository.findAll();
     }
 
-    /*
+    /**
      * Example rest call
      * curl -X POST localhost:8080/rest/add/fund -H "Accept: application/json"
      * -H 'Content-type:application/json' -d '{"fundName":"SBI", "fundType":"MutualFund"}'
@@ -101,6 +101,19 @@ class RestController {
     @PostMapping("/add/fund")
     public void addPortfolio(@RequestBody Fund fund){
         fundRepository.save(fund);
+    }
+
+    /**
+     * Example rest call
+     * curl -X GET localhost:8080/rest/fundByInvestor -H "Accept: application/json" -H 'Content-type:application/json' -d '1'
+     *
+     * @param investorId
+     * @return
+     */
+    @GetMapping("/fundByInvestor")
+    public List<Fund> getFundByInvestor(@RequestBody String investorId){
+        System.out.println("investorId: "+investorId);
+        return (List<Fund>) fundRepository.findByInvestorId(Long.parseLong(investorId));
     }
 
 }

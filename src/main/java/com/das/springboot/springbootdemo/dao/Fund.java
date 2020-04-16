@@ -12,6 +12,9 @@ public class Fund {
     @GeneratedValue()
     private Long id;
 
+    @Column(name = "investor_id")
+    private Long investorId;
+
     @Column(name = "fund_name")
     private String fundName;
 
@@ -43,5 +46,13 @@ public class Fund {
 
     public void setFundType(String fundType) {
         this.fundType = fundType;
+    }
+
+    public Long getInvestorId() {
+        return investorId;
+    }
+
+    public void setInvestorId(Long investorId) {
+        this.investorId = investorId;
     }
 }
