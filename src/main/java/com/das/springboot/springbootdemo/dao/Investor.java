@@ -1,9 +1,7 @@
 package com.das.springboot.springbootdemo.dao;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.List;
 
 @Entity
 public class Investor {
@@ -17,6 +15,9 @@ public class Investor {
 
     @Column(name = "last_name")
     private String lastName;
+
+    @OneToMany(targetEntity = Fund.class)
+    private List investedFund;
 
     public Investor() {
     }
@@ -43,5 +44,13 @@ public class Investor {
 
     public void setLastName(String lastName) {
         this.lastName = lastName;
+    }
+
+    public List getInvestedFund() {
+        return investedFund;
+    }
+
+    public void setInvestedFund(List investedFund) {
+        this.investedFund = investedFund;
     }
 }

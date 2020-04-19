@@ -1,9 +1,6 @@
 package com.das.springboot.springbootdemo.dao;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
 public class Fund {
@@ -12,8 +9,9 @@ public class Fund {
     @GeneratedValue()
     private Long id;
 
-    @Column(name = "investor_id")
-    private Long investorId;
+    @ManyToOne
+    @JoinColumn(name = "investor_id", nullable = false)
+    private Investor investor;
 
     @Column(name = "fund_name")
     private String fundName;
@@ -48,11 +46,11 @@ public class Fund {
         this.fundType = fundType;
     }
 
-    public Long getInvestorId() {
-        return investorId;
-    }
-
-    public void setInvestorId(Long investorId) {
-        this.investorId = investorId;
-    }
+//    public Long getInvestorId() {
+//        return investorId;
+//    }
+//
+//    public void setInvestorId(Long investorId) {
+//        this.investorId = investorId;
+//    }
 }

@@ -1,7 +1,4 @@
-DROP TABLE IF EXISTS billionaires;
-DROP TABLE IF EXISTS person;
-
-
+--Starting DB script
 CREATE TABLE person (
   id INT AUTO_INCREMENT  PRIMARY KEY,
   first_name VARCHAR(250) NOT NULL,
@@ -32,7 +29,4 @@ CREATE TABLE fund (
 INSERT INTO investor (first_name, last_name) values ('John', 'Wick');
 INSERT INTO fund (investor_id, fund_name, fund_type) VALUES ('1', 'SBI-Smart Scholor', 'MUTUAL FUND');
 INSERT INTO portfolio (username) VALUES ('Test Portfolio');
---INSERT INTO person (first_name, last_name) VALUES
---  ('Aliko', 'Dangote'),
---  ('Bill', 'Gates'),
---  ('Folrunsho', 'Alakija');
+-- Ending DB script

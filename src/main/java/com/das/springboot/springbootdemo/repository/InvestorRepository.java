@@ -11,4 +11,6 @@ import java.util.List;
 public interface InvestorRepository extends CrudRepository<Investor, Long> {
 
     Investor findById(long id);
+
+    List<Investor> findByFund(Fund fund);
 }

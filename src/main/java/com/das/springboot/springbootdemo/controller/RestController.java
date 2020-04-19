@@ -3,9 +3,11 @@ package com.das.springboot.springbootdemo.controller;
 import com.das.springboot.springbootdemo.dao.Fund;
 import com.das.springboot.springbootdemo.dao.Person;
 import com.das.springboot.springbootdemo.dao.Portfolio;
-import com.das.springboot.springbootdemo.repository.FundRepository;
 import com.das.springboot.springbootdemo.repository.PersonRepository;
 import com.das.springboot.springbootdemo.repository.PortfolioRepository;
+import com.das.springboot.springbootdemo.service.FundService;
+import com.das.springboot.springbootdemo.service.InvestorService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -18,12 +20,15 @@ class RestController {
 
     private final PortfolioRepository portfolioRepository;
 
-    private final FundRepository fundRepository;
+    @Autowired
+    private InvestorService investorService;
 
-    RestController(PersonRepository personRepository, PortfolioRepository portfolioRepository, FundRepository fundRepository) {
+    @Autowired
+    private FundService fundService;
+
+    RestController(PersonRepository personRepository, PortfolioRepository portfolioRepository) {
         this.personRepository = personRepository;
         this.portfolioRepository = portfolioRepository;
-        this.fundRepository = fundRepository;
     }
 
     @GetMapping("/status")
@@ -90,7 +95,7 @@ class RestController {
      */
     @GetMapping("/fund")
     public List<Fund> listAllFund() {
-        return (List<Fund>) fundRepository.findAll();
+        return (List<Fund>) fundService.getAllFunds();
     }
 
     /**
@@ -100,7 +105,7 @@ class RestController {
      * */
     @PostMapping("/add/fund")
     public void addPortfolio(@RequestBody Fund fund){
-        fundRepository.save(fund);
+        fundService.addFund(fund);
     }
 
     /**
@@ -112,8 +117,7 @@ class RestController {
      */
     @GetMapping("/fundByInvestor")
     public List<Fund> getFundByInvestor(@RequestBody String investorId){
-        System.out.println("investorId: "+investorId);
-        return (List<Fund>) fundRepository.findByInvestorId(Long.parseLong(investorId));
+        return fundService.getFundByInvestor(investorId);
     }
 
 }
